@@ -1,6 +1,7 @@
 let pathValue = 0;
 let expenditureValue = 0;
 let rateValue = 0;
+let x2form = false
 
 const fuel = {
     '0': '',
@@ -98,6 +99,38 @@ select.addEventListener("change", function (event) {
     // console.log(select.selectedIndex)
 })
 
+function x2on(x2) {
+    console.log('x2 on')
+    // x2.classList.add('x2')
+    x2.style.background = 'green'
+    
+    x2.style.color = 'white'
+
+    if (path.value != '') {
+        pathValue *= 2
+        path.value = pathValue
+    }
+
+    cals(pathValue, expenditureValue, rateValue, cost, volume)
+
+    x2form = true
+}
+
+function x2off(x2) {
+    console.log('x2 off')
+    x2.style.background = 'white'
+    x2.style.color = 'black'
+
+    if (path.value != '') {
+        pathValue = Math.round(path.value * 50) / 100
+        path.value = pathValue
+    }
+    
+    cals(pathValue, expenditureValue, rateValue, cost, volume)
+
+    x2form = false
+}
+
 // очистка
 const clear = form.clear
 clear.addEventListener("click", function (event) {
@@ -105,14 +138,19 @@ clear.addEventListener("click", function (event) {
     pathValue = 0;
     expenditureValue = 0;
     rateValue = 0;
+    x2off(x2);
     // rate.focus();
     // rate.setSelectionRange(length, length);
 })
 
-// console.log(main.value);
 
-// console.log(select.options)
-// selected = select.selectedIndex
-// console.log(selected)
 
-// select.selectedIndex = 4
+// x2
+const x2 = form.x2
+x2.addEventListener("click", function (event) {
+    if (x2form == false) {
+        x2on(x2);
+    } else {
+        x2off(x2);
+    }
+})
