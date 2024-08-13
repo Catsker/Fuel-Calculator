@@ -110,7 +110,7 @@ input::-webkit-inner-spin-button {
 
 .cover {
 	max-width: 750px;
-	margin: 15px;
+	margin: 20px;
 	/* border: green 1px solid; */
 	
 }
@@ -145,9 +145,9 @@ input::-webkit-inner-spin-button {
 	/* grid-column: span 1; */
 }
 
-.clear:hover{
+/* .clear:hover{
 	background: rgb(167, 167, 167);
-}
+} */
 
 .clear:active {
 	background: red;
@@ -172,7 +172,7 @@ input::-webkit-inner-spin-button {
 
 .parsInfo {
 	color: rgb(117, 117, 117);
-	margin-top: 2px;
+	margin-top: 4px;
 	font-size: 12px;	
 }
 
@@ -269,8 +269,8 @@ footer svg {
 
 	.container {
 		/* gap: 15px; */
-
-		grid-template-columns: calc(50% - 22.5px) 0fr 1fr min-content;
+		column-gap: 10px;
+		grid-template-columns: calc(50% - 15px) 0fr 1fr min-content;
 		/* gap: 0; */
 
 	}
