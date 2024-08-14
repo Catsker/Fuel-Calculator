@@ -1,3 +1,28 @@
+// Регистрация Service Worker
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', async () => {
+        const swPath = 'sw.js';  // Обновите путь здесь
+        console.log('Attempting to register Service Worker at:', swPath);
+
+        // Проверка доступности файла
+        try {
+            const response = await fetch(swPath, { method: 'HEAD' });
+            if (response.ok) {
+                console.log('Service Worker file is available:', swPath);
+            } else {
+                console.error('Service Worker file is not available:', swPath);
+            }
+        } catch (error) {
+            console.error('Error checking Service Worker file:', error);
+        }
+
+        // Регистрация Service Worker
+        navigator.serviceWorker.register(swPath)
+            .then(reg => console.log('Service Worker registered!', reg))
+            .catch(err => console.error('Service Worker registration failed:', err));
+    });
+}
+
 let pathValue = 0;
 let expenditureValue = 0;
 let rateValue = 0;
@@ -102,7 +127,7 @@ select.addEventListener("change", function (event) {
 function x2on(x2) {
     console.log('x2 on')
     // x2.classList.add('x2')
-    x2.style.background = 'green'
+    x2.style.background = '#009a3c'
     
     x2.style.color = 'white'
 
