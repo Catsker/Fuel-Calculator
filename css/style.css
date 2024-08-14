@@ -27,7 +27,6 @@ html,body{
 	-moz-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
 	background: #000000;
-	overflow: hidden;
 	
 	background-position: center;
 	background-size: cover;
@@ -222,7 +221,7 @@ footer {
 	font-size: 18px;
 	font-weight: 700;
 	color: white;
-	margin-bottom: 1px;
+	margin-bottom: 3px;
 }
 
 footer svg {
