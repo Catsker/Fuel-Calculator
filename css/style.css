@@ -26,7 +26,7 @@ html,body{
 	-ms-text-size-adjust: 100%;
 	-moz-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
-	background: #0a001b;
+	background: #000000;
 	/* overflow: hidden; */
 	
 	background-position: center;
@@ -189,7 +189,7 @@ input, button, select, output {
 
 input:focus {
 
-	box-shadow: 0 0 10px 5px #006400;
+	box-shadow: 0 0 10px 5px #009a3c;
 
 }
 
@@ -320,7 +320,7 @@ footer svg {
 	}
 
 	.gridTitleSwap2 {
-		grid-row-start: 10;
+		grid-row-start: 9;
 		/* border: #ce0e0e 1px solid; */
 		
 	}
