@@ -16,12 +16,12 @@
                 <form class="container" name="main">
                     <label for="#path" class="gridTitle">Расстояние</label>
                     <label for="#exp" class="gridTitle gridTitleWrap">Расход</label>
-                    <input type="number" id="path" class="gridItem path" placeholder="км." name="path">
+                    <input type="number" id="path" class="gridItem path" placeholder="км." name="path" autocomplete="off">
                     <button type="button" class="gridItem x2" title="Учитывать путь обратно" name="x2">X2</button>
-                    <input type="number" id="exp" class="gridItem exp" placeholder="литров на 100 км." name="expenditure">
+                    <input type="number" id="exp" class="gridItem exp" placeholder="литров на 100 км." name="expenditure" autocomplete="off">
             
                     <label for="#rate" class="gridLongTitle">Стоимость литра топлива</label>
-                    <input type="number" id="rate" class="gridItem rate" placeholder="за 1 литр" name="rate">
+                    <input type="number" id="rate" class="gridItem rate" placeholder="за 1 литр" name="rate" autocomplete="off">
                     <select name="select" id="fuelType" class="gridItem select" >
                         <option>Ручной ввод</option>
                         <option>АИ-92</option>
