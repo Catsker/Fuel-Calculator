@@ -1,7 +1,7 @@
 // Регистрация Service Worker
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', async () => {
-        const swPath = 'sw.js';  // Обновите путь здесь
+        const swPath = 'sw.js';
         console.log('Attempting to register Service Worker at:', swPath);
 
         // Проверка доступности файла
@@ -60,21 +60,14 @@ let cost = form.cost
 
 // вычисления
 function cals(path, expenditure, rate, cost, volume) {
-    // console.log(`расход ${expenditure}`)
-    // console.log(`путь ${path}`)
-    // console.log(`цена ${rate}`)
-
-    // console.log(volume.value)
     volume.value = Math.round(expenditure * path) / 100 
     cost.value = Math.round(volume.value * rate * 100) / 100
-    // console.log(cost.value)
 }
 
 // расстояние
 const path = form.path
 path.addEventListener("input", function (event) {
     pathValue = path.value
-    // console.log(`value: ${pathValue}`)
     cals(pathValue, expenditureValue, rateValue, cost, volume)
 })
 
@@ -82,7 +75,6 @@ path.addEventListener("input", function (event) {
 const expenditure = form.expenditure
 expenditure.addEventListener("input", function (event) {
     expenditureValue = expenditure.value
-    // console.log(`value: ${expenditureValue}`)
     cals(pathValue, expenditureValue, rateValue, cost, volume)
 
 })
@@ -92,7 +84,6 @@ const rate = form.rate
 rate.addEventListener("input", function (event) {
     select.selectedIndex = 0
     rateValue = rate.value
-    // console.log(`value: ${rateValue}`)
     cals(pathValue, expenditureValue, rateValue, cost, volume)
 })
 
@@ -107,28 +98,20 @@ select.addEventListener("change", function (event) {
         case 5:
         case 6:
         case 7:
-
             rate.value = fuel[select.selectedIndex]
-            // console.log(rate.value)
             rateValue = rate.value
             cals(pathValue, expenditureValue, rateValue, cost, volume)
-
             break
         case 0:
             rate.value = ''
             rate.focus();
-            // rate.setSelectionRange(length, length);
             break
     }
-
-    // console.log(select.selectedIndex)
 })
 
 function x2on(x2) {
     console.log('x2 on')
-    // x2.classList.add('x2')
     x2.style.background = '#009a3c'
-    
     x2.style.color = 'white'
 
     if (path.value != '') {
@@ -150,25 +133,20 @@ function x2off(x2) {
         pathValue = Math.round(path.value * 50) / 100
         path.value = pathValue
     }
-    
-    cals(pathValue, expenditureValue, rateValue, cost, volume)
 
+    cals(pathValue, expenditureValue, rateValue, cost, volume)
+    
     x2form = false
 }
 
 // очистка
 const clear = form.clear
 clear.addEventListener("click", function (event) {
-    // console.log('ok')
     pathValue = 0;
     expenditureValue = 0;
     rateValue = 0;
     x2off(x2);
-    // rate.focus();
-    // rate.setSelectionRange(length, length);
 })
-
-
 
 // x2
 const x2 = form.x2
