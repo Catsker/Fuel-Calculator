@@ -47,8 +47,6 @@ html,body{
 	background-size: cover;
 }
 
-
-
 input,button,textarea{font-family:inherit;}
 
 input::-ms-clear{display: none;}
@@ -67,27 +65,22 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 
-
-
 .coverAll {
 	width: 100%;
 	height: 100vh;
 	position: absolute;
 	top: 0;
 	left: 0;
-	/* border: green 1px solid; */
 	box-sizing: content-box;
 	display: flex;
 	flex-direction: column;
 	overflow: auto;
 }
 
-
 .coverMain {
 	display: flex;
 	justify-content: center;
     align-items: center;
-	/* border: #ce0e0e 1px solid; */
 	flex: 1 1 auto;
 } 
 
@@ -95,14 +88,8 @@ input::-webkit-inner-spin-button {
 .container {
 	display: grid;
 	grid-template-columns: 1fr min-content 1fr min-content;
-	/* grid-template-rows: repeat(n, 1fr); */
-	/* grid-template-rows: repeat(10, 50px); */
-	/* max-width: 750px; */
 	margin: 0 auto;
 	column-gap: 15px;
-	/* gap: 5px; */
-	/* max-height: 20px; */
-	/* border: royalblue 1px solid; */
 	width: 100%;
 
 }
@@ -110,20 +97,13 @@ input::-webkit-inner-spin-button {
 .cover {
 	max-width: 750px;
 	margin: 20px;
-	/* border: green 1px solid; */
-	
 }
 
 .gridItem {
 	padding: 15px;
 }
 
-.path {
-
-}
-
-.x2, .clear {
-	/* height: 100%; */
+.x2 {
 	aspect-ratio: 1/1;
 }
 
@@ -133,23 +113,6 @@ input::-webkit-inner-spin-button {
 
 .rate {
 	grid-column: span 2;
-}
-
-
-
-.clear {
-	aspect-ratio: 1/1;
-	/* background: red; */
-	position: relative;
-	/* grid-column: span 1; */
-}
-
-/* .clear:hover{
-	background: rgb(167, 167, 167);
-} */
-
-.clear:active {
-	background: red;
 }
 
 .volume, .cost {
@@ -180,7 +143,6 @@ input, button, select, output {
 	background-color: white;
 	font-size: 24px;
 	width: 100%;
-	/* padding: 15px; */
 	font-size: 24px;
 	border-radius: 10px;
 	opacity: 0.8;
@@ -189,7 +151,6 @@ input, button, select, output {
 input:focus {
 
 	box-shadow: 0 0 10px 5px #009a3c;
-
 }
 
 a {
@@ -217,7 +178,6 @@ h1 {
 footer {
 	width: 100%;
 	text-align: center;
-	
 	font-size: 18px;
 	font-weight: 700;
 	color: white;
@@ -227,10 +187,6 @@ footer {
 footer svg {
 	margin-bottom: -2px;
 }
-
-
-
-
 
 @media (max-width: 850px) {
 	h1 {
@@ -246,10 +202,6 @@ footer svg {
 
 		background-position: center;
 		background-size: cover;
-	}
-	
-	.cover {
-		/* width: 90%; */
 	}
 }
 
@@ -267,11 +219,8 @@ footer svg {
 	}
 
 	.container {
-		/* gap: 15px; */
 		column-gap: 10px;
 		grid-template-columns: calc(50% - 15px) 0fr 1fr min-content;
-		/* gap: 0; */
-
 	}
 
 	.path {
@@ -288,13 +237,11 @@ footer svg {
 	}
 
 	.gridTitleWrap {
-		/* order: 1; */
 		grid-row-start: 3;
 	}
 
 	input, select, button, output {
 		font-size: 18px;
-		/* padding: 10px; */
 	}
 
 	.gridItem {
@@ -320,7 +267,5 @@ footer svg {
 
 	.gridTitleSwap2 {
 		grid-row-start: 9;
-		/* border: #ce0e0e 1px solid; */
-		
 	}
 }
