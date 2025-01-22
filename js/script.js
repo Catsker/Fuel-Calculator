@@ -23,137 +23,173 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-let pathValue = 0;
-let expenditureValue = 0;
-let rateValue = 0;
-let x2form = false
-
 const fuel = {
-    '0': '',
-    '1': 2.34, //92
-    '2': 2.44, //95
-    '3': 2.66, //98
-    '4': 2.44, //дт
-    '5': 3.58, //дт эко
-    '6': 2.60, //дт -32
-    '7': 1.25, //газ
+    'none': '',
+    'ai92': 2.34, //92
+    'ai95': 2.44, //95
+    'ai98': 2.66, //98
+    'dt': 2.44, //дт
+    'dt eco': 3.58, //дт эко
+    'dtz': 2.60, //дт -32
+    'gas': 1.25, //газ
 }
 
-const links = document.querySelectorAll('a');
+const selectors = {
+    gitHub: '.gitHub',
+    form: '[js-calculator]',
+    volume: '.volume',
+    cost: '.cost',
+    select: '.select',
+    rate: '.rate'
+}
 
-// Привязываем обработчик клика ко всем ссылкам
-links.forEach(link => {
-    link.addEventListener('click', function(event) {
+// const namings = {
+//     path: 'path',
+//     expediture: 'expenditure',
+//     rate: 'rate',
+//     select: 'select',
+// }
+
+
+
+
+// GitHub link
+const gitHubLink = document.querySelector(selectors.gitHub);
+
+if (gitHubLink) {
+    gitHubLink.addEventListener('click', function (event) {
         // Показать диалоговое окно с подтверждением
-        const isConfirmed = confirm(`Перейти на сайт?\n\n${link}`);
-        
+        const isConfirmed = confirm(`Перейти в профиль разработчика?\n\n${gitHubLink.href}`);
+
         // Если пользователь отменяет действие, предотвратить переход
         if (!isConfirmed) {
             event.preventDefault();
         }
     });
-});
-
-const form = document.forms.main;
-let volume = form.volume
-let cost = form.cost
-
-// вычисления
-function cals(path, expenditure, rate, cost, volume) {
-    volume.value = Math.round(expenditure * path) / 100 
-    cost.value = Math.round(volume.value * rate * 100) / 100
+} else {
+    console.error('Элемент .gitHub не найден.');
 }
 
-// расстояние
-const path = form.path
-path.addEventListener("input", function (event) {
-    pathValue = path.value
-    cals(pathValue, expenditureValue, rateValue, cost, volume)
-})
+//form
+const form = document.querySelector('[js-calculator]')
 
-// расход
-const expenditure = form.expenditure
-expenditure.addEventListener("input", function (event) {
-    expenditureValue = expenditure.value
-    cals(pathValue, expenditureValue, rateValue, cost, volume)
+//inputs
+const path = document.getElementById('path')
+const expediture = document.getElementById('exp')
+const rate = document.getElementById('rate')
+const select = document.getElementById('select')
 
-})
+//output
+const volume = document.getElementById('volume')
+const cost = document.getElementById('cost')
 
-// цена
-const rate = form.rate
-rate.addEventListener("input", function (event) {
-    select.selectedIndex = 0
-    rateValue = rate.value
-    cals(pathValue, expenditureValue, rateValue, cost, volume)
-})
+//buttons
+const x2 = document.getElementById('x2')
+const clear = document.getElementById('trash')
 
-// список
-const select = form.select
-select.addEventListener("change", function (event) {
-    switch(select.selectedIndex) {
-        case 1:
-        case 2:
-        case 3:
-        case 4:
-        case 5:
-        case 6:
-        case 7:
-            rate.value = fuel[select.selectedIndex]
-            rateValue = rate.value
-            cals(pathValue, expenditureValue, rateValue, cost, volume)
+if (x2.checked) path *= 2
+
+//loading
+window.location.search
+    .replace('?', '')
+    .split('&')
+    .forEach(queryParams => {
+        const [name, value] = queryParams.split('=')
+
+        // console.log(`${name}: ${value}`)
+
+        // name.value = value
+
+        // const elem = document.querySelector(`input[name="${name}"]`) || document.querySelector(`select[name="${name}"]`)
+
+        const elem = document.getElementById(name)
+
+
+        if (elem) {
+            switch (name) {
+                case 'x2':
+                    elem.checked = value
+                    break
+                case 'select':
+                    rate.value = fuel[value]
+                    console.log(`rate: ${rate.value}`)
+                    break
+                default:
+                    elem.value = value
+                    break
+            }
+            if (name === 'x2') {
+                elem.checked = value
+            }
+
+            elem.value = value
+        }
+
+        // console.log(name, value)
+        
+    });
+
+    volume.textContent = Math.round((expediture.value / 100 * path.value) * 100) / 100
+    cost.textContent = Math.round((expediture.value / 100 * path.value * rate.value) * 100) / 100
+
+function selectNone() {
+    return select.value === 'none' ? `&rate=${rate.value}` : ''
+}
+
+function change(event) {
+    console.log(event.target.id)
+    switch (event.target.id) {
+        case 'select':
+            if (fuel[select.value]) {
+                rate.value = fuel[select.value];
+            }
             break
-        case 0:
-            rate.value = ''
-            rate.focus();
+        case 'rate':
+            select.value = 'none'
+            break
+        case 'x2':
+            if (path.value) {
+                if (x2.checked) {
+                    path.value *= 2
+                } else {
+                    path.value /= 2
+                }
+            }
             break
     }
-})
 
-function x2on(x2) {
-    console.log('x2 on')
-    x2.style.background = '#009a3c'
-    x2.style.color = 'white'
 
-    if (path.value != '') {
-        pathValue *= 2
-        path.value = pathValue
-    }
+    let dataString = ''
 
-    cals(pathValue, expenditureValue, rateValue, cost, volume)
+    if (x2.checked) dataString += `x2=true`
+    if (path.value) dataString += `&path=${path.value}`
+    if (expediture.value) dataString += `&exp=${expediture.value}`
+    dataString += `&select=${select.value}`
+    if (select.value === 'none' && rate.value !== '') dataString += `&rate=${rate.value}` 
 
-    x2form = true
+    window.history.replaceState(
+        {},
+        '',
+        `${window.location.pathname}?${dataString}`
+    )
+
+    console.log(window.location.pathname)
+
+    volume.textContent = Math.round((expediture.value / 100 * path.value) * 100) / 100
+    cost.textContent = Math.round((expediture.value / 100 * path.value * rate.value) * 100) / 100
 }
 
-function x2off(x2) {
-    console.log('x2 off')
-    x2.style.background = 'white'
-    x2.style.color = 'black'
+clear.addEventListener('click', (event) => {
+    volume.textContent = 0
+    cost.textContent = 0
+    window.history.replaceState(
+        {},
+        '',
+        `${window.location.pathname}`
+    )
 
-    if (path.value != '') {
-        pathValue = Math.round(path.value * 50) / 100
-        path.value = pathValue
-    }
-
-    cals(pathValue, expenditureValue, rateValue, cost, volume)
-    
-    x2form = false
-}
-
-// очистка
-const clear = form.clear
-clear.addEventListener("click", function (event) {
-    pathValue = 0;
-    expenditureValue = 0;
-    rateValue = 0;
-    x2off(x2);
 })
 
-// x2
-const x2 = form.x2
-x2.addEventListener("click", function (event) {
-    if (x2form == false) {
-        x2on(x2);
-    } else {
-        x2off(x2);
-    }
+form.addEventListener('input', (event) => {
+    change(event)
 })
