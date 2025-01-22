@@ -1,20 +1,29 @@
 /*Обнуление*/
-*{
+* {
 	padding: 0;
 	margin: 0;
 	border: 0;
 }
-*,*:before,*:after{
+
+*, *:before, *:after {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
-:focus,:active{outline: none;}
-a:focus,a:active{outline: none;}
 
-nav,footer,header,aside{display: block;}
+:focus, :active {
+	outline: none;
+}
 
-html,body{
+a:focus, a:active {
+	outline: none;
+}
+
+nav, footer, header, aside {
+	display: block;
+}
+
+html, body {
 	position: relative;
 	height: 100vh;
 	width: 100%;
@@ -45,22 +54,49 @@ html,body{
 	background-size: cover;
 }
 
-input,button,textarea{font-family:inherit;}
+input, button, textarea {
+	font-family: inherit;
+}
 
-input::-ms-clear{display: none;}
-button{cursor: pointer;}
-button::-moz-focus-inner {padding:0;border:0;}
-a, a:visited{text-decoration: none;}
-a:hover{text-decoration: none;}
-ul li{list-style: none;}
-img{vertical-align: top;}
+input::-ms-clear {
+	display: none;
+}
 
-h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
+button {
+	cursor: pointer;
+}
+
+button::-moz-focus-inner {
+	padding: 0;
+	border: 0;
+}
+
+a, a:visited {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+ul li {
+	list-style: none;
+}
+
+img {
+	vertical-align: top;
+}
+
+h2, h3, h4, h5, h6 {
+	font-size: inherit;
+	font-weight: 400;
+}
+
 /*--------------------*/
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+	-webkit-appearance: none;
 }
 
 .coverAll {
@@ -78,9 +114,9 @@ input::-webkit-inner-spin-button {
 .coverMain {
 	display: flex;
 	justify-content: center;
-    align-items: center;
+	align-items: center;
 	flex: 1 1 auto;
-} 
+}
 
 .container {
 	display: grid;
@@ -103,6 +139,7 @@ input::-webkit-inner-spin-button {
 	aspect-ratio: 1;
 }
 
+
 .exp {
 	grid-column: span 2;
 }
@@ -114,10 +151,12 @@ input::-webkit-inner-spin-button {
 .clear {
 	aspect-ratio: 1;
 	position: relative;
+	transition: background-color 0.1s ease-out, transform 0.1s ease-out;
 }
 
 .clear:active {
 	background: red;
+	transform: scale(0.95);
 }
 
 .volume, .cost {
@@ -140,22 +179,72 @@ input::-webkit-inner-spin-button {
 .parsInfo {
 	color: rgb(117, 117, 117);
 	margin-top: 4px;
-	font-size: 12px;	
+	font-size: 12px;
 }
 
-input, button, select, output {
+label {
+	margin-top: 25px;
+	margin-bottom: 4px;
+
+}
+
+input, button, select, output, .x2 {
+	/* display: block; */
 	color: black;
 	background-color: white;
 	font-size: 24px;
 	width: 100%;
-	font-size: 24px;
 	border-radius: 10px;
 	opacity: 0.8;
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
 input:focus {
 	box-shadow: 0 0 10px 5px #009a3c;
 }
+
+.x2 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+	transition: background-color 0.1s ease-out, transform 0.1s ease-out;
+
+}
+
+.x2Checkbox {
+	display: none;
+}
+
+/* Когда чекбокс выбран (галочка поставлена) */
+.x2Checkbox:checked+.x2 {
+	background-color: #009a3c;
+	color: white;
+	
+	/* animation: scale 0.2s ease forwards; */
+}
+
+/* .x2Checkbox:not(:checked)+.x2 {
+	background-color: white;
+	animation: scale 0.2s ease reverse forwards;
+}
+
+@keyframes scale {
+	0% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(0.95);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+} */
 
 a {
 	color: inherit;
@@ -168,14 +257,10 @@ a {
 	transform: translate(-50%, -50%);
 }
 
-label {
-	margin-top: 25px;
-	margin-bottom: 4px;
 
-}
 
 h1 {
-	text-align: center;	
+	text-align: center;
 	margin-bottom: 20px;
 }
 
@@ -231,7 +316,7 @@ footer svg {
 
 	.exp {
 		grid-column: span 4;
-		
+
 	}
 
 	.cover {
@@ -242,7 +327,7 @@ footer svg {
 		grid-row-start: 3;
 	}
 
-	input, select, button, output {
+	input, select, button, output, .x2 {
 		font-size: 18px;
 	}
 
@@ -259,6 +344,10 @@ footer svg {
 @media (max-width: 450px) {
 	label {
 		font-size: 12px;
+	}
+
+	.x2 {
+		padding-top: 11px;
 	}
 }
 
