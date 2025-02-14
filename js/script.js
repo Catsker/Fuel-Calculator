@@ -181,6 +181,7 @@ function change(event) {
 }
 
 clear.addEventListener('click', (event) => {
+    event.preventDefault()
     volume.textContent = 0
     cost.textContent = 0
     select.value = 'none'
