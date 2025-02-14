@@ -88,6 +88,7 @@ const x2 = document.getElementById('x2')
 const clear = document.getElementById('trash')
 
 if (x2.checked) path *= 2
+rate.value = fuel[select.value];
 
 //loading
 window.location.search
