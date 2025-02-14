@@ -183,7 +183,7 @@ function change(event) {
 clear.addEventListener('click', (event) => {
     volume.textContent = 0
     cost.textContent = 0
-    select.value = 'ai95'
+    select.value = 'none'
     rate.value = fuel[select.value];
     window.history.replaceState(
         {},
