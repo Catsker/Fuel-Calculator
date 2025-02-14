@@ -180,10 +180,10 @@ function change(event) {
     cost.textContent = Math.round((expediture.value / 100 * path.value * rate.value) * 100) / 100
 }
 
-clear.addEventListener('click', (event) => {
-    event.preventDefault()
+clear.addEventListener('click', (event) => {
     volume.textContent = 0
     cost.textContent = 0
+    event.preventDefault()
     select.value = 'none'
     rate.value = fuel[select.value];
     window.history.replaceState(
