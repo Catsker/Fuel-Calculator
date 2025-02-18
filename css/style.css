@@ -1,3 +1,18 @@
+@font-face {
+	font-family: 'magistralc';
+	src: url('../fonts/MagistralC\ Regular.woff2');
+}
+
+@font-face {
+	font-family: 'magistralc black';
+	src: url('../fonts/magistralblackc.woff2');
+}
+
+@font-face {
+	font-family: 'magistralc bold';
+	src: url('../fonts/magistralc-bold.woff2');
+}
+
 /*Обнуление*/
 * {
 	padding: 0;
@@ -32,6 +47,11 @@ html, body {
 	line-height: 1;
 	font-size: 24px;
 	font-family: Arial, Helvetica, sans-serif;
+	/* font-family: 'magistralc bold'; */
+	font-family: 'magistralc';
+	/* letter-spacing: 0.03em; */
+	/* letter-spacing: 1px; */
+
 	-ms-text-size-adjust: 100%;
 	-moz-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
@@ -97,6 +117,11 @@ h2, h3, h4, h5, h6 {
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
 	-webkit-appearance: none;
+}
+
+h1 {
+	/* font-family: 'magistralc'; */
+
 }
 
 .coverAll {
@@ -198,6 +223,10 @@ input, button, select, output, .x2 {
 	opacity: 0.8;
 	margin-top: 0;
 	margin-bottom: 0;
+	font-family: 'magistralc';
+	/* letter-spacing: 0.03em; */
+
+	/* letter-spacing: 1px; */
 }
 
 input:focus {
@@ -252,6 +281,7 @@ a {
 
 .clear svg {
 	position: absolute;
+	width: 70%;
 	top: 50;
 	left: 50;
 	transform: translate(-50%, -50%);
@@ -271,6 +301,7 @@ footer {
 	font-weight: 700;
 	color: white;
 	margin-bottom: 3px;
+	letter-spacing: 1px;
 }
 
 footer svg {

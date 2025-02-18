@@ -144,6 +144,9 @@ function change(event) {
             if (fuel[select.value]) {
                 rate.value = fuel[select.value];
             }
+            if (select.value === 'none') {
+                rate.focus()
+            }
             break
         case 'rate':
             select.value = 'none'
