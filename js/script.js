@@ -40,16 +40,152 @@ const selectors = {
     volume: '.volume',
     cost: '.cost',
     select: '.select',
-    rate: '.rate'
+    rate: '.rate',
+    translation: '[data-lang]',
+    translation_placeholder: '[data-lang-placeholder]',
+    langInput: '.settings__lang__input'
 }
 
-// const namings = {
-//     path: 'path',
-//     expediture: 'expenditure',
-//     rate: 'rate',
-//     select: 'select',
-// }
+const translation = {
+    "ru": {
+        "title": "Калькулятор расхода топлива",
+        "distance": "Расстояние",
+        "expenditure": "Расход",
+        "cost": "Стоимость литра топлива",
+        "litres-required": "Понадобится литров",
+        "amount": "на сумму (BYN)",
+        "placeholder_km": "км.",
+        "placeholder_l/m": "литров на 100 км.",
+        "placeholder_l": "за 1 литр",
+        "manual": "Ручной ввод",
+        "ai92": "АИ-92",
+        "ai95": "АИ-95",
+        "ai98": "АИ-98",
+        "dt": "ДТ",
+        "dt_eco": "ДТ эко",
+        "dtz": "ДТЗ -32°",
+        "gas": "Газ (ПБА)",
+        "settings": "Настройки",
+        "change_the_lang": "Изменить язык",
+        "settings-close": "Закрыть",
+    },
 
+    "en": {
+        "title": "Fuel consumption calculator",
+        "distance": "Distance",
+        "expenditure": "Consumption",
+        "cost": "Cost per liter of fuel",
+        "litres-required": "Required liters:",
+        "amount": "for the amount of (BYN):",
+        "placeholder_km": "km.",
+        "placeholder_l/m": "liters per 100 km.",
+        "placeholder_l": "per liter",
+        "manual": "Manual input",
+        "ai92": "92 Octane",
+        "ai95": "95 Octane",
+        "ai98": "98 Octane",
+        "dt": "Diesel fuel",
+        "dt_eco": "Diesel ECO",
+        "dtz": "Winter diesel -32°",
+        "gas": "Gas (propane-butane)",
+        "settings": "Settings",
+        "change_the_lang": "Change the language",
+        "settings-close": "Close",
+    },
+
+    "be": {
+        "title": "Калькулятар выдатку паліва",
+        "distance": "Адлегласць",
+        "expenditure": "Выдатак",
+        "cost": "Кошт літра паліва",
+        "litres-required": "Спатрэбіцца літраў",
+        "amount": "на суму (BYN)",
+        "placeholder_km": "км.",
+        "placeholder_l/m": "літраў на 100 км.",
+        "placeholder_l": "за 1 літр",
+        "manual": "Ручны ўвод",
+        "ai92": "АІ-92",
+        "ai95": "АІ-95",
+        "ai98": "АІ-98",
+        "dt": "ДТ",
+        "dt_eco": "ДТ эка",
+        "dtz": "ДТЗ -32°",
+        "gas": "Газ (ПБА)",
+        "settings": "Налады",
+        "change_the_lang": "Змяніць мову",
+        "settings-close": "Схаваць",
+    }
+}
+
+//update
+const currentVersion = 'v2.5'
+let userVersion = localStorage.getItem("version")
+
+if (currentVersion !== userVersion) {
+    let update = document.getElementById("update")
+    update.showModal()
+
+    localStorage.setItem("version", currentVersion);
+}
+
+
+// langCHeck
+let lang = localStorage.getItem("lang") || "ru"; // Используем let вместо const, чтобы можно было изменять
+const dataLang = document.querySelectorAll('[data-lang]');
+const dataLangPlaceholder = document.querySelectorAll('[data-lang-placeholder]');
+const langSelect = document.getElementById(lang);
+const langItems = document.querySelectorAll('.settings__lang__input');
+
+// Устанавливаем выбранный язык в радио-кнопке
+if (langSelect) {
+    langSelect.checked = true;
+}
+
+function LoadLang() {
+    // Устанавливаем атрибут lang у тега <html>
+    document.documentElement.setAttribute("lang", lang);
+
+    // Обновляем текст на странице
+    dataLang.forEach((element) => {
+        const key = element.getAttribute('data-lang');
+        if (translation[lang] && translation[lang][key]) {
+            element.textContent = translation[lang][key];
+        }
+    });
+
+    // Обновляем плейсхолдеры
+    dataLangPlaceholder.forEach((element) => {
+        const key = element.getAttribute('data-lang-placeholder');
+        if (translation[lang] && translation[lang][key]) {
+            element.placeholder = translation[lang][key];
+        }
+    });
+}
+
+// langSet
+LoadLang();
+
+// Обработчики событий для переключения языка
+langItems.forEach((langItem) => {
+    langItem.addEventListener('click', () => {
+        // Снимаем выбор со всех радио-кнопок
+        langItems.forEach((item) => {
+            item.checked = false;
+        });
+
+        // Устанавливаем выбор на текущую кнопку
+        langItem.checked = true;
+
+        // Обновляем переменную lang
+        lang = langItem.value; // Обновляем значение переменной lang
+
+        // Сохраняем выбранный язык в localStorage
+        localStorage.setItem("lang", lang);
+
+        // Применяем новый язык
+        LoadLang();
+    });
+});
 
 
 
@@ -71,7 +207,7 @@ if (gitHubLink) {
 }
 
 //form
-const form = document.querySelector('[js-calculator]')
+const form = document.querySelector('.container')
 
 //inputs
 const path = document.getElementById('path')
@@ -127,11 +263,11 @@ window.location.search
         }
 
         // console.log(name, value)
-        
+
     });
 
-    volume.textContent = Math.round((expediture.value / 100 * path.value) * 100) / 100
-    cost.textContent = Math.round((expediture.value / 100 * path.value * rate.value) * 100) / 100
+volume.textContent = Math.round((expediture.value / 100 * path.value) * 100) / 100
+cost.textContent = Math.round((expediture.value / 100 * path.value * rate.value) * 100) / 100
 
 function selectNone() {
     return select.value === 'none' ? `&rate=${rate.value}` : ''
@@ -169,7 +305,7 @@ function change(event) {
     if (path.value) dataString += `&path=${path.value}`
     if (expediture.value) dataString += `&exp=${expediture.value}`
     dataString += `&select=${select.value}`
-    if (select.value === 'none' && rate.value !== '') dataString += `&rate=${rate.value}` 
+    if (select.value === 'none' && rate.value !== '') dataString += `&rate=${rate.value}`
 
     window.history.replaceState(
         {},

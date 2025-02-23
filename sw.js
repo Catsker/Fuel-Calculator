@@ -1,4 +1,4 @@
-const staticCacheName = 'fuel-app-cache-v2.3';
+const staticCacheName = 'v2.5';
 
 const assetUrls = [
     '/',                    // Корневой путь для index.html
