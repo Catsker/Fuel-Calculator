@@ -183,11 +183,7 @@ h1 {
 
 
 
-.clear:active {
-	background: red;
-	scale: 0.97;
 
-}
 
 .volume, .cost {
 	grid-column: span 2;
@@ -556,13 +552,18 @@ footer {
 		background-color: #007a2f;
 	}
 
-.clear:hover {
-	/* transform: scale(0.97); */
+/*
+.clear:hover {
 	scale: 0.97;
-	background-color: red;	
-	color: white;	
-
+	background-color: red;
 }
+
+.clear:active {
+	background: red;
+	scale: 0.97;
+}
+*/
+
 }
 
 @media (max-width: 850px) {
