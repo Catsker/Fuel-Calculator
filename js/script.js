@@ -118,7 +118,7 @@ const translation = {
 }
 
 //update
-const currentVersion = 'v2.5'
+const currentVersion = 'v2.5.1'
 let userVersion = localStorage.getItem("version")
 
 if (currentVersion !== userVersion) {
