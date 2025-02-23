@@ -41,6 +41,7 @@ nav, footer, header, aside {
 html, body {
 	position: relative;
 	height: 100vh;
+ height: 100svh;
 	width: 100%;
 	font-size: 100%;
 	color: white;
