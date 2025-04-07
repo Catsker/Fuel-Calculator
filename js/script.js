@@ -25,13 +25,13 @@ if ('serviceWorker' in navigator) {
 
 const fuel = {
     'none': '',
-    'ai92': 2.34, //92
-    'ai95': 2.44, //95
-    'ai98': 2.66, //98
-    'dt': 2.44, //дт
-    'dt_eco': 3.58, //дт эко
-    'dtz': 2.60, //дт -32
-    'gas': 1.25, //газ
+    'ai92': 2.42, //92
+    'ai95': 2.52, //95
+    'ai98': 2.74, //98
+    'dt': 2.52, //дт
+    'dt_eco': 3.66, //дт эко
+    'dtz': 2.68, //дт -32
+    'gas': 1.28, //газ
 }
 
 const selectors = {
@@ -118,7 +118,7 @@ const translation = {
 }
 
 //update
-const currentVersion = 'v2.5.1'
+const currentVersion = 'v2.5.2'
 let userVersion = localStorage.getItem("version")
 
 if (currentVersion !== userVersion) {
