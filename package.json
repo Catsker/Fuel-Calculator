@@ -1,0 +1,23 @@
+{
+  "name": "@user/fuel-calculator",
+  "version": "1.0.0",
+  "description": "Калькулятор поможет рассчитать необходимый литраж топлива, в зависимости от расхода автомобиля и планируемого расстояния, а также цену топлива, опираясь на последние данные официального сайта Беларуснефть.",
+  "main": "sw.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Catsker/Fuel-Calculator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Catsker/Fuel-Calculator/issues"
+  },
+  "homepage": "https://github.com/Catsker/Fuel-Calculator#readme",
+  "dependencies": {
+    "vue": "^3.5.13"
+  }
+}

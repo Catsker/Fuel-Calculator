@@ -135,7 +135,7 @@
                     <h2>{{translation[lang].settings}}</h2>
                     <button type="button" class="settings__title settings__version" title="Посмотреть что нового"
                         @click="openUpdateWindow">
-                        <i>{{translation[lang].version}}: {{currentVersion}}</i></button>
+                        <i>{{translation[lang].version}}: v{{currentVersion}}</i></button>
                     <!-- <input type="checkbox" v-model="staticBackground" name="staticBackground"> -->
                     <fieldset class="settings__fieldset settings__lang">
                         <legend class="settings__title">{{translation[lang].change_the_lang}}</legend>
@@ -210,7 +210,7 @@
             <dialog class="update" id="update">
                 <form @submit.prevent="closeUpdateWindow">
                     <h2 class="update__title">Что нового?</h2>
-                    <p class="update__text"><i>Глобальное обновление {{currentVersion}}</i></p>
+                    <p class="update__text"><i>Глобальное обновление v{{currentVersion}}</i></p>
                     <ul class="update__list">
                         <li class="update__item">Код переписан на более стабильный фреймворк.</li>
                         <li class="update__item">Добавлена возможность рассчитывать расстояние на основе литров и
@@ -233,8 +233,7 @@
         </div>
     </div>
 
-
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="js/vue.global.js"></script>
     <script src="js/script.js"></script>
 </body>
 

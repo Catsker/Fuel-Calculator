@@ -105,7 +105,7 @@ const App = {
       cost: '',
       lastChanged: 'path',
       lang: 'ru',
-      currentVersion: 'v3.0.0',
+      currentVersion: '3.01',
       staticBackground: false,
       isShow: false,
       // currentUrl: ''

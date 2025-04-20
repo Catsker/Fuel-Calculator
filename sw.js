@@ -1,9 +1,10 @@
-const staticCacheName = 'v3.0.0';
+const staticCacheName = '3.01';
 
 const assetUrls = [
   '/',                    // Корневой путь для index.html
   '/index.html',
   '/css/style.css',
+  '/js/vue.global.js',
   '/js/script.js',
   '/manifest.json',
   '/android/icon-192x192.png',
