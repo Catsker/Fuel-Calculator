@@ -55,7 +55,7 @@
                             <option value="ai98">{{translation[lang].ai98}}</option>
                             <option value="dt">{{translation[lang].dt}}</option>
                             <option value="dt_eco">{{translation[lang].dt_eco}}</option>
-                            <option value="dtz">{{translation[lang].dtz}}</option>
+                            <!-- <option value="dtz">{{translation[lang].dtz}}</option> -->
                             <option value="gas">{{translation[lang].gas}}</option>
                         </select>
                         <input type="number" v-model="rate" @input="rateClicked" id="rate" class="gridItem rate"
@@ -210,7 +210,7 @@
             <dialog class="update" id="update">
                 <form @submit.prevent="closeUpdateWindow">
                     <h2 class="update__title">Что нового?</h2>
-                    <p class="update__text"><i>Глобальное обновление v{{currentVersion}}</i></p>
+                    <p class="update__text"><i>Глобальное обновление v3.0</i></p>
                     <ul class="update__list">
                         <li class="update__item">Код переписан на более стабильный фреймворк.</li>
                         <li class="update__item">Добавлена возможность рассчитывать расстояние на основе литров и

@@ -88,13 +88,13 @@ const App = {
       },
       fuel: {
         // 'none': '',
-        'ai92': 2.46, //92
-        'ai95': 2.56, //95
-        'ai98': 2.78, //98
-        'dt': 2.56, //дт
-        'dt_eco': 3.71, //дт эко
-        'dtz': 2.72, //дт -32
-        'gas': 1.30, //газ
+        'ai92': 2.50, //92
+        'ai95': 2.60, //95
+        'ai98': 2.82, //98
+        'dt': 2.60, //дт
+        'dt_eco': 3.77, //дт эко
+        // 'dtz': 2.72, //дт -32
+        'gas': 1.32, //газ
       },
       path: '',
       exp: '',
@@ -105,7 +105,7 @@ const App = {
       cost: '',
       lastChanged: 'path',
       lang: 'ru',
-      currentVersion: '3.01',
+      currentVersion: '3.02',
       staticBackground: false,
       isShow: false,
       // currentUrl: ''
@@ -185,7 +185,7 @@ const App = {
     //other
     const userVersion = localStorage.getItem('version')
     if (!userVersion || userVersion !== this.currentVersion) {
-      this.openUpdateWindow()
+      // this.openUpdateWindow()
       localStorage.setItem('version', this.currentVersion)
     }
 
