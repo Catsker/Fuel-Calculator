@@ -1,4 +1,4 @@
-const staticCacheName = '3.01';
+const staticCacheName = '3.02';
 
 const assetUrls = [
   '/',                    // Корневой путь для index.html
