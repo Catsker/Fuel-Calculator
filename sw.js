@@ -1,7 +1,7 @@
-const staticCacheName = '3.02';
+const staticCacheName = '3.03';
 
 const assetUrls = [
-  '/',                    // Корневой путь для index.html
+  '/',
   '/index.html',
   '/css/style.css',
   '/js/vue.global.js',
@@ -13,7 +13,6 @@ const assetUrls = [
   '/img/photo_2024-11-28_14-07-50'
 ];
 
-// Установка Service Worker и кэширование ресурсов
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(staticCacheName)
@@ -22,7 +21,6 @@ self.addEventListener('install', event => {
   );
 });
 
-// Активация Service Worker и удаление старых кэшей
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(cacheNames => {
@@ -34,29 +32,20 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Обработка запросов
 self.addEventListener('fetch', event => {
   event.respondWith(
     (async () => {
       const { request } = event;
 
-      // 🚫 Пропускаем запросы не к http/https
-      // if (!request.url.startsWith('http')) {
-      //   return fetch(request);
-      // }
-
-      // Пропускаем методы, отличные от GET
       if (request.method !== 'GET') {
         return fetch(request);
       }
 
-      // Проверка кэша
       const cachedResponse = await caches.match(request);
       if (cachedResponse) {
         return cachedResponse;
       }
 
-      // Запрос к сети
       try {
         const networkResponse = await fetch(request);
         const cache = await caches.open(staticCacheName);

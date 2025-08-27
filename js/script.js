@@ -105,18 +105,15 @@ const App = {
       cost: '',
       lastChanged: 'path',
       lang: 'ru',
-      currentVersion: '3.02',
+      currentVersion: '3.03',
       staticBackground: false,
       isShow: false,
-      // currentUrl: ''
-      // showInstallButton: false,
     }
   },
   mounted() {
     // Обновляем данные из search строки
     const url = new URL(window.location.href);
     const params = new URLSearchParams(url.search);
-    // console.log(`params: ${params}`)
     this.rate = this.fuel[this.select];
     if (params.toString() !== '') {
       this.lastChanged = params.get('lastChanged')
@@ -141,14 +138,6 @@ const App = {
           this.path = params.get('path') || '';
           break
       }
-      // console.log(`.lastChanged ${this.lastChanged}`)
-      // console.log(`.x2 ${this.x2}`)
-      // console.log(`.exp ${this.exp}`)
-      // console.log(`.select ${this.select}`)
-      // console.log(`.rate ${this.rate}`)
-      // console.log(`.cost ${this.cost}`)
-      // console.log(`.volume ${this.volume}`)
-      // console.log(`.path ${this.path}`)
       this.recalculate('load')
     }
 
@@ -158,35 +147,24 @@ const App = {
       this.registerServiceWorker();
     }
 
+    if (!this.$root._isInitialized) {
+      // Слушаем событие beforeinstallprompt
+      this.$root._isInitialized = true
+      window.addEventListener('beforeinstallprompt', (e) => {
+        console.log('📦 beforeinstallprompt triggered!')
+        e.preventDefault();
+        this.deferredPrompt = e;
+        setTimeout(() => {
+          this.isShow = true
+        }, 5000)
+        console.log('called to show the window')
+      });
+    }
 
-
-    // Слушаем событие beforeinstallprompt
-    window.addEventListener('beforeinstallprompt', (e) => {
-      console.log('📦 beforeinstallprompt triggered!');
-      e.preventDefault(); // Отключаем стандартное окно установки
-      this.deferredPrompt = e; // Сохраняем событие для использования позже
-      // window.installApp.show(); // Показываем кастомное окно
-      setTimeout(() => {
-        this.isShow = true
-
-      }, 5000)
-      console.log('called to show the window')
-    });
-
-    //is installed
-    // if (window.matchMedia('(display-mode: standalone)').matches) {
-    //   this.showInstallButton = false;
-    // }
-    // window.addEventListener('appinstalled', () => {
-    //   this.showInstallButton = false
-    // })
-
-
-    //other
     const userVersion = localStorage.getItem('version')
     if (!userVersion || userVersion !== this.currentVersion) {
-      // this.openUpdateWindow()
       localStorage.setItem('version', this.currentVersion)
+      // this.openUpdateWindow()
     }
 
     const savedLang = localStorage.getItem('lang');
@@ -237,7 +215,6 @@ const App = {
       if (this.select === 'none') {
         newSearch += `&rate=${this.rate}`
       }
-      // console.log(newSearch)
       history.replaceState(null, '', `${location.pathname}${newSearch}`)
     },
     registerServiceWorker() {
@@ -268,7 +245,6 @@ const App = {
     },
     closeInstallPrompt() {
       this.isShow = false
-      // window.installApp.close()
     },
     openUpdateWindow() {
       window.update.showModal()

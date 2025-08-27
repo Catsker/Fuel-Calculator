@@ -11,27 +11,8 @@
 </head>
 
 <body>
-    <!-- <div class="background"></div> -->
     <div class="background__cover" id="app">
         <div class="background"></div>
-
-        <!-- <div v-if="staticBackground" class="background">
-
-        </div>
-        <div v-else class="background__video" style="background-color: red;">
-            <video autoplay muted loop playsinline>
-                <source src="img/Untitled.mp4" type="video/mp4">
-            </video>
-            
-        </div> -->
-        <!-- <div class="experiment__cover">
-            <div v-if="staticBackground" class="experiment" style="background-color: red;">
-                <img src="" alt="">
-            </div>
-            <div v-else class="experiment" style="background-color: green;">
-
-            </div>
-        </div> -->
         <div class="coverAll">
             <div class="coverMain">
                 <div class="cover">
@@ -80,8 +61,6 @@
                             </svg>
                             X2
                         </button>
-                        <!-- <p class="parsInfo gridLongTitle">По данным с сайта <a href="https://azs.belorusneft.by/sitebeloil/ru/center/azs/center/fuelandService/price/" target="_blank">azs.belorusneft.by</a> на <span id="getData">13.08.2024</span></p> -->
-
                         <label for="volume" class="gridTitle">{{translation[lang].litres_required}}</label>
                         <label for="cost" class="gridTitle gridTitleSwap2">{{translation[lang].amount}}</label>
                         <input type="number" class="gridItem volume" @input="volumeChanged" id="volume" v-model="volume"
@@ -136,7 +115,6 @@
                     <button type="button" class="settings__title settings__version" title="Посмотреть что нового"
                         @click="openUpdateWindow">
                         <i>{{translation[lang].version}}: v{{currentVersion}}</i></button>
-                    <!-- <input type="checkbox" v-model="staticBackground" name="staticBackground"> -->
                     <fieldset class="settings__fieldset settings__lang">
                         <legend class="settings__title">{{translation[lang].change_the_lang}}</legend>
                         <!-- Белорусский -->
@@ -199,8 +177,6 @@
                             </div>
                         </label>
                     </fieldset>
-                    <!-- <button v-if="showInstallButton" type="button" class="update__text" @click="installApp"><i>Скачать
-                            приложение</i></button> -->
                     <button type="button" @click="closeSettings" class="settings__close">
                         {{translation[lang].settings_close}}
                     </button>

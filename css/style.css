@@ -125,16 +125,9 @@ h2, h3, h4, h5, h6 {
     font-weight: 400;
 }
 
-/*--------------------*/
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
-}
-
-h1 {
-    /* font-family: 'magistralc'; */
-
 }
 
 :root {
@@ -144,7 +137,6 @@ h1 {
 .coverAll {
     width: 100%;
     height: 100vh;
-    /*  	height: 100svh; */
     position: absolute;
     top: 0;
     left: 0;
@@ -187,15 +179,10 @@ h1 {
     grid-column: span 2;
 }
 
-.rate {
-    /*grid-column: span 2;*/
-}
-
 .clear {
     aspect-ratio: 1;
     position: relative;
     color: transparent;
-    /* transition: background-color 0.1s ease-out, transform 0.1s ease-out; */
 }
 
 .background__cover {
@@ -232,7 +219,6 @@ label {
 }
 
 input, button, select, output, .x2 {
-    /* display: block; */
     color: black;
     background-color: white;
     font-size: 24px;
@@ -242,9 +228,7 @@ input, button, select, output, .x2 {
     margin-top: 0;
     margin-bottom: 0;
     font-family: 'magistralc';
-    /* letter-spacing: 0.03em; */
     height: 100%;
-    /* letter-spacing: 1px; */
 }
 
 .select {
@@ -269,32 +253,10 @@ input:focus {
     display: none;
 }
 
-/* Когда чекбокс выбран (галочка поставлена) */
 .x2Checkbox:checked+.x2 {
     background-color: var(--main-color);
     color: white;
-
-    /* animation: scale 0.2s ease forwards; */
 }
-
-/* .x2Checkbox:not(:checked)+.x2 {
-	background-color: white;
-	animation: scale 0.2s ease reverse forwards;
-}
-
-@keyframes scale {
-	0% {
-		transform: scale(1);
-	}
-
-	50% {
-		transform: scale(0.95);
-	}
-
-	100% {
-		transform: scale(1);
-	}
-} */
 
 a {
     color: inherit;
@@ -309,8 +271,6 @@ a {
     transform: translate(-50%, -50%);
 }
 
-
-
 h1 {
     text-align: center;
     margin-bottom: 20px;
@@ -321,10 +281,7 @@ footer {
     font-size: 18px;
     font-weight: 700;
     color: white;
-    /* margin-bottom: 3px; */
     letter-spacing: 1px;
-    /* border: #009a3c solid 1px; */
-    /* box-sizing: content-box; */
     overflow: hidden;
     z-index: 10;
 }
@@ -335,41 +292,21 @@ footer {
     justify-content: center;
     align-items: center;
     gap: 0;
-    /* margin: 0 auto; */
-    /* margin-inline-start: auto;
-    margin-inline-end: auto; */
-    /* border: #009a3c 1px solid; */
-
 }
 
 .footer__profile-link {
     display: flex;
-
     align-items: center;
     gap: 5px;
-    /* border: #009a3c 1px solid; */
-    /* background: red; */
     border-radius: 10px;
-    /* padding-bottom: 3px; */
     padding-inline: 7px;
     height: 30px;
-}
-
-
-.footer__profile-link svg {
-    /* margin-bottom: -2px; */
-}
-
-.footer__profile-link * {
-    /* border: #009a3c 1px solid; */
-
 }
 
 .footer__profile-link p {
     display: flex;
     align-items: flex-end;
     margin-bottom: -2px;
-    /* line-height: 90%; */
     height: 20px;
 }
 
@@ -380,8 +317,6 @@ footer {
     width: 30px;
     height: 30px;
     background: transparent;
-    /* border: #009a3c 1px solid; */
-    /* border-radius: 0px; */
 }
 
 
@@ -389,8 +324,6 @@ footer {
     width: 23px;
     aspect-ratio: 1;
     object-fit: cover;
-    /* border: #009a3c 1px solid; */
-
 }
 
 .settings {
@@ -398,11 +331,7 @@ footer {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* width: 100px;
-    height: 100px; */
     background-color: white;
-    /* font-size: 24px; */
-    /* width: 100%; */
     border-radius: 10px;
     padding: 20px;
     min-width: 260px;
@@ -420,13 +349,11 @@ footer {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    /* gap: 15px; */
     margin-bottom: 10px;
 }
 
 .settings__lang__item--wrapper {
     opacity: 1;
-    /* border: 1px solid black; */
     overflow: hidden;
     margin: 0;
 
@@ -437,22 +364,18 @@ footer {
 }
 
 .settings__lang__item--wrapper input[type="radio"]:checked ~ .settings__lang__item {
-    background-color: #D3D3D3; /* Цвет фона при выборе */
-    border: #A9A9A9 1px solid; /* Цвет рамки при выборе */
+    background-color: #D3D3D3;
+    border: #A9A9A9 1px solid;
 }
 
 .settings__lang__item {
-    /* border: 1px solid black; */
-    /* width: 100px; */
     overflow: hidden;
     padding: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 10%;
-    border: transparent 1px solid; /* Цвет рамки при выборе */
-
-
+    border: transparent 1px solid;
 }
 
 .settings__lang__item svg {
@@ -462,7 +385,6 @@ footer {
     object-fit: cover;
     border-radius: 10%;
     border: 1px solid black;
-
 }
 
 .settings__lang__input {
@@ -617,8 +539,6 @@ footer {
 
     .footer__profile-link:hover {
         background: rgba(255, 255, 255, 0.1);
-        /* background: green; */
-
     }
 
     .settings__lang__item:hover {
@@ -628,15 +548,12 @@ footer {
     .x2Checkbox:hover + .x2 {
         background-color: #f0f0f0;
         scale: 0.97;
-
-        /* animation: scale 0.2s ease forwards; */
     }
 
 
     .x2Checkbox:checked:hover + .x2 {
         background-color: #007a2f;
         scale: 0.97;
-        /* animation: scale 0.2s ease forwards; */
     }
 
     .settings__close:hover {
@@ -713,10 +630,6 @@ footer {
         padding: 10px;
     }
 
-    .x2, .clear {
-        /*padding: 0;*/
-    }
-
     button svg {
         width: 25px;
         height: 25px;
@@ -726,14 +639,6 @@ footer {
 @media (max-width: 450px) {
     label {
         font-size: 12px;
-    }
-
-    .x2 {
-        /*padding-top: 11px;*/
-    }
-
-    .x2, .clear {
-        /*padding: 0;*/
     }
 }
 
